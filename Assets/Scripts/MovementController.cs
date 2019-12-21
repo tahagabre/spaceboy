@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+// TODO: rename this to PlayerMovementController
 public class MovementController : MonoBehaviour
 {
+    [SerializeField] private Ease easeType;
+
     private float inputXAxis;  // velocity based on user input
     private Vector2 moveVelocity;   // velocity after manipulation for movement
 
-    [Range(0, 1)]
+    [Range(0, 3)]
     [SerializeField] private float moveDuration;
+    
+    [SerializeField] private float distanceMultiplier;
 
     void Awake()
     {
@@ -35,6 +40,6 @@ public class MovementController : MonoBehaviour
     private void Move()
     {
         moveVelocity.x = inputXAxis;
-        transform.DOMoveX(moveVelocity.x, moveDuration);
+        transform.DOMoveX(moveVelocity.x * distanceMultiplier, moveDuration, false).SetEase(easeType);
     }
 }

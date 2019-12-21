@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class InputController : MonoBehaviour
 {
     [SerializeField] private InputAction moveInput;
-    [SerializeField] private MovementController movementController;
+    [SerializeField] private SpaceBoyController spaceBoyController;
     
     private void Awake()
     {
-        moveInput.performed += context => movementController.SetInputVelocity(context.ReadValue<Vector2>().x);
-        moveInput.canceled += context => movementController.ResetInputVelocity();
+        moveInput.performed += context => spaceBoyController.MoveInputOcurred(context.ReadValue<Vector2>().x);
+        moveInput.canceled += context => spaceBoyController.MoveInputCancelled();
     }
 
     private void OnEnable()

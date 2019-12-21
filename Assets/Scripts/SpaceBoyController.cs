@@ -2,14 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Controls in game concretions: health, power ups, fuel, etc.
+// Delegate to all components
 public class SpaceBoyController : MonoBehaviour
 {
+
+    private InputController inputController;
+    private MovementController movementController;
+    private FuelController fuelController;
+
     void Awake()
     {
+        inputController = GetComponent<InputController>();
+        movementController = GetComponent<MovementController>();
+        fuelController = GetComponent<FuelController>();
     }
 
-    void Update()
+    public void MoveInputOcurred(float input)
     {
+        fuelController.DepleteFuel();
+        movementController.SetInputVelocity(input);
+    }
+
+    public void MoveInputCancelled()
+    {
+        fuelController.ReplenishFuel();
+        movementController.ResetInputVelocity();
     }
 }
