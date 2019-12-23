@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2c11a4bea85ac4ca66e532ff3056cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depletionRate: 0.5
-  replenishRate: 1
+  depletionRate: 1
+  replenishRate: 2
   fuel: 0
+  fuelRestorationTime: 2
