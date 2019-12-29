@@ -18,12 +18,15 @@ public class SpaceBoyController : MonoBehaviour
         //healthController = GetComponent<HealthController>();
     }
 
+    // Logic for disabling input here to prevent fuelController and SpaceBoyController from having references to each other
     private void Update()
     {
         if (fuelController.GetFuelState() == FuelController.FuelState.empty) {
-            /*Damage Player Health*/
-            // inputController.LockInput();
-            print("Damage Player");
+            inputController.enabled = false;
+        }
+        else
+        {
+            inputController.enabled = true;
         }
     }
 
