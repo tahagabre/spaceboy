@@ -68,7 +68,6 @@ public class FuelController : MonoBehaviour
     private void FuelExhausted()
     {
         print("empty");
-        // Damage Player Here
         StartCoroutine("RestoreFuel");
     }
 

@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 2896768432570640048}
   - component: {fileID: 2896768432570640049}
   - component: {fileID: 2896768432570640054}
+  - component: {fileID: 660285170}
   m_Layer: 0
   m_Name: Space Boy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,3 +169,15 @@ MonoBehaviour:
   replenishRate: 2
   fuel: 0
   fuelRestorationTime: 2
+--- !u!114 &660285170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896768432570640046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d02b816f01dfdd43ac9419b6198bb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
