@@ -10,7 +10,7 @@ using UnityEngine;
  */
 public abstract class Collidable : MonoBehaviour
 {
-    public enum CollidableType { Asteroid, Powerup, Mob, Boss };
-    public CollidableType collidableType;
+    public enum CollidableType { Asteroid, Powerup, Mob, Boss, Player };
+    protected CollidableType collidableType;
     public abstract void CollisionOccurred(CollidableType type);
 }

@@ -1,17 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class AsteroidController : Collidable
 {
     public const int DAMAGE = 25;
-
-    private bool shouldSpawn;
+    private bool active; // In field of play
 
     void Awake() {
         collidableType = CollidableType.Asteroid;
-        shouldSpawn = false;
+        active = false;
     }
 
     // Asteroids don't care what they collide with; asteroids just pool as soon as they collide
@@ -23,21 +21,28 @@ public class AsteroidController : Collidable
             collidable.CollisionOccurred(this.collidableType);
         }
 
-        shouldSpawn = true;
+        active = true;
     }
 
+    // Code Smell, violates Interface Seperation Principle
     public override void CollisionOccurred(CollidableType _)
     {
         // Don't need this, we have a collider to handle
     }
 
-    public bool GetSpawnState()
+    public bool IsActive()
     {
-        return shouldSpawn;
+        return active;
     }
 
-    public void SetSpawnState(bool newSpawnState)
+    public void SetActiveState(bool newActiveState)
     {
-        shouldSpawn = newSpawnState;
+        active = newActiveState;
+    }
+
+    // Not used internally
+    public void Spawn(Vector3 position)
+    {
+        transform.position = position;
     }
 }

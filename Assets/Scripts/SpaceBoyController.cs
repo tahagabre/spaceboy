@@ -12,6 +12,7 @@ public class SpaceBoyController : Collidable
 
     void Awake()
     {
+        collidableType = CollidableType.Player;
         inputController = GetComponent<InputController>();
         movementController = GetComponent<MovementController>();
         fuelController = GetComponent<FuelController>();
