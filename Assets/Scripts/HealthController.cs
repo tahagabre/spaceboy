@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    private float health;
+    private int health;
 
     void Awake()
     {
-        health = 100f;
+        health = 100;
     }
 
-    void Update()
-    {
-        
+    public void Damage(int damage) {
+        health -= damage;
     }
-
-    private void DamagePlayer() { }
 }
