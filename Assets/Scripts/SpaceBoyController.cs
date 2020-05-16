@@ -23,18 +23,31 @@ public class SpaceBoyController : Collidable
     private void Update()
     {
         ControlInput();
-        CheckCollision();
     }
 
-    public void MoveInputOcurred(float input)
+    public void MoveInputOcurred(float x, float y)
     {
+        movementController.SetState(MovementController.MovementState.moving);
         fuelController.SetFuelState(FuelController.FuelState.depleting);
-        movementController.SetInputVelocity(input);
+        movementController.SetInputVelocity(x, y);
     }
 
     public void MoveInputCancelled()
     {
+        movementController.SetState(MovementController.MovementState.none);
         fuelController.SetFuelState(FuelController.FuelState.replenishing);
+        movementController.ResetInputVelocity();
+    }
+
+    public void DashInputOcurred()
+    {
+        movementController.SetState(MovementController.MovementState.dashing);
+    }
+
+    public void DashInputCancelled()
+    {
+        print("Dash input cancelled");
+        movementController.SetState(MovementController.MovementState.none);
         movementController.ResetInputVelocity();
     }
 
@@ -50,18 +63,22 @@ public class SpaceBoyController : Collidable
         }
     }
 
-    private void CheckCollision()
+    protected override void HandleCollisionWith(GameObject go)
     {
-
-    }
-
-    public override void CollisionOccurred(CollidableType collidableType)
-    {
-        switch (collidableType)
+        switch (go.GetComponent<Collidable>().collidableType)
         {
             case CollidableType.Asteroid:
-                healthController.DamagePlayer(AsteroidController.DAMAGE);
+                healthController.Damage(Asteroid.DAMAGE);
+                break;
+            case CollidableType.Powerup:
+                //print("player react to powerup");
                 break;
         }
+    }
+
+    // Generally, there is no collision the player should ignore
+    protected override bool ShouldIgnoreCollision(CollidableType collidableType)
+    {
+        return false;
     }
 }

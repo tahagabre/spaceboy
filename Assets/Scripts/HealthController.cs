@@ -11,7 +11,7 @@ public class HealthController : MonoBehaviour
         health = 100;
     }
 
-    public void DamagePlayer(int damage) {
+    public void Damage(int damage) {
         health -= damage;
     }
 }

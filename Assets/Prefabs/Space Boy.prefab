@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2896768432570640049}
   - component: {fileID: 2896768432570640054}
   - component: {fileID: 660285170}
+  - component: {fileID: 6279847869374210212}
   m_Layer: 0
   m_Name: Space Boy
   m_TagString: Player
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe78872948f05140af2fe6b1458dd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collidableType: 4
 --- !u!114 &2896768432570640048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +139,22 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Move Input
       m_Flags: 0
+  dashInput:
+    m_Name: Dash Input
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 36955fa8-d415-4a63-838b-8eb02b1aabab
+    m_Processors: 
+    m_Interactions: Press
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 34bd761c-2d68-4546-a260-414b2bebd9fd
+      m_Path: <Gamepad>/leftTrigger
+      m_Interactions: Press
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dash Input
+      m_Flags: 0
   spaceBoyController: {fileID: 2896768432570640051}
 --- !u!114 &2896768432570640049
 MonoBehaviour:
@@ -152,7 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   easeType: 18
   moveDuration: 3
-  distanceMultiplier: 10
+  moveMultiplier: 10
+  dashMultiplier: 5
 --- !u!114 &2896768432570640054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2c11a4bea85ac4ca66e532ff3056cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depletionRate: 1
-  replenishRate: 2
+  depletionRate: 2
+  replenishRate: 1
   fuel: 0
   fuelRestorationTime: 2
 --- !u!114 &660285170
@@ -181,3 +200,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d02b816f01dfdd43ac9419b6198bb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &6279847869374210212
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896768432570640046}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
